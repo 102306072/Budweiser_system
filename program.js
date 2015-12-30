@@ -507,8 +507,6 @@ function stockStatCompute() {
 			aveSaleD += parseInt(tempStoreArray[j][i])/365;
 		}
 	}
-	console.log(aveSaleA + aveSaleB + aveSaleC + aveSaleD);
-
 
 	if (productAmounts[0] < aveSaleA*1.1) {
 		productStats[0] = "短缺";
@@ -529,6 +527,13 @@ function stockStatCompute() {
 		productStats[3] = "短缺";
 	} else {
 		productStats[3] = "正常";
+	}
+	for(var i = 4; i < productNames.length; i++) {
+		if (productAmounts[i] < (aveSaleA+aveSaleB+aveSaleC+aveSaleD)*0.25*1.1) {
+			productStats[i] = "短缺";
+		} else {
+			productStats[i] = "正常";
+		}
 	}
 
 	//["水","二氧化碳","糖","藍色色素","紅色色素","黃色色素"]
@@ -595,8 +600,72 @@ function confirmRequest(sodaname,storename){
 			}
 			
 		}
+		storeRefresh();
 		alert(storename+"補貨完成!");
 	}
+}
+
+function storeRefresh() {
+	document.getElementById("store1total").innerHTML=store1_cur[0];
+	document.getElementById("store1left").innerHTML=store1_cur[1];
+	document.getElementById("store1blue").innerHTML=store1_cur[2];
+	document.getElementById("store1red").innerHTML=store1_cur[3];
+	document.getElementById("store1org").innerHTML=store1_cur[4];
+	document.getElementById("store1black").innerHTML=store1_cur[5];
+	document.getElementById("store2total").innerHTML=store2_cur[0];
+	document.getElementById("store2left").innerHTML=store2_cur[1];
+	document.getElementById("store2blue").innerHTML=store2_cur[2];
+	document.getElementById("store2red").innerHTML=store2_cur[3];
+	document.getElementById("store2org").innerHTML=store2_cur[4];
+	document.getElementById("store2black").innerHTML=store2_cur[5];
+	document.getElementById("store3total").innerHTML=store3_cur[0];
+	document.getElementById("store3left").innerHTML=store3_cur[1];
+	document.getElementById("store3blue").innerHTML=store3_cur[2];
+	document.getElementById("store3red").innerHTML=store3_cur[3];
+	document.getElementById("store3org").innerHTML=store3_cur[4];
+	document.getElementById("store3black").innerHTML=store3_cur[5];
+	document.getElementById("store4total").innerHTML=store4_cur[0];
+	document.getElementById("store4left").innerHTML=store4_cur[1];
+	document.getElementById("store4blue").innerHTML=store4_cur[2];
+	document.getElementById("store4red").innerHTML=store4_cur[3];
+	document.getElementById("store4org").innerHTML=store4_cur[4];
+	document.getElementById("store4black").innerHTML=store4_cur[5];
+	document.getElementById("store5total").innerHTML=store5_cur[0];
+	document.getElementById("store5left").innerHTML=store5_cur[1];
+	document.getElementById("store5blue").innerHTML=store5_cur[2];
+	document.getElementById("store5red").innerHTML=store5_cur[3];
+	document.getElementById("store5org").innerHTML=store5_cur[4];
+	document.getElementById("store5black").innerHTML=store5_cur[5];
+	document.getElementById("store6total").innerHTML=store6_cur[0];
+	document.getElementById("store6left").innerHTML=store6_cur[1];
+	document.getElementById("store6blue").innerHTML=store6_cur[2];
+	document.getElementById("store6red").innerHTML=store6_cur[3];
+	document.getElementById("store6org").innerHTML=store6_cur[4];
+	document.getElementById("store6black").innerHTML=store6_cur[5];
+	document.getElementById("store7total").innerHTML=store7_cur[0];
+	document.getElementById("store7left").innerHTML=store7_cur[1];
+	document.getElementById("store7blue").innerHTML=store7_cur[2];
+	document.getElementById("store7red").innerHTML=store7_cur[3];
+	document.getElementById("store7org").innerHTML=store7_cur[4];
+	document.getElementById("store7black").innerHTML=store7_cur[5];
+	document.getElementById("store8total").innerHTML=store8_cur[0];
+	document.getElementById("store8left").innerHTML=store8_cur[1];
+	document.getElementById("store8blue").innerHTML=store8_cur[2];
+	document.getElementById("store8red").innerHTML=store8_cur[3];
+	document.getElementById("store8org").innerHTML=store8_cur[4];
+	document.getElementById("store8black").innerHTML=store8_cur[5];
+	document.getElementById("store9total").innerHTML=store9_cur[0];
+	document.getElementById("store9left").innerHTML=store9_cur[1];
+	document.getElementById("store9blue").innerHTML=store9_cur[2];
+	document.getElementById("store9red").innerHTML=store9_cur[3];
+	document.getElementById("store9org").innerHTML=store9_cur[4];
+	document.getElementById("store9black").innerHTML=store9_cur[5];
+	document.getElementById("store10total").innerHTML=store10_cur[0];
+	document.getElementById("store10left").innerHTML=store10_cur[1];
+	document.getElementById("store10blue").innerHTML=store10_cur[2];
+	document.getElementById("store10red").innerHTML=store10_cur[3];
+	document.getElementById("store10org").innerHTML=store10_cur[4];
+	document.getElementById("store10black").innerHTML=store10_cur[5];
 }
 
 
@@ -806,6 +875,10 @@ function chartRefresh() {
 	store10_sales_A, store10_sales_B, store10_sales_C, store10_sales_D
 	];
 	var index = document.getElementById("chartSelect").value;
+	storeSaleA = [0,0,0,0,0,0,0,0,0,0,0,0];
+	storeSaleB = [0,0,0,0,0,0,0,0,0,0,0,0];
+	storeSaleC = [0,0,0,0,0,0,0,0,0,0,0,0];
+	storeSaleD = [0,0,0,0,0,0,0,0,0,0,0,0];
 	if(index != "all") {
 		storeSaleA = tempStoreArray[4*index];
 		storeSaleB = tempStoreArray[4*index+1];
@@ -880,3 +953,11 @@ $('#chartButton').click(function () {
     });
 });
 });
+
+//降價
+function discount(){
+	var discountMoney = 0.4*parseFloat(storeSaleA)/parseFloat(storeSaleD)/(1.4);
+	document.getElementById("segustion").style.display="block";	
+	document.getElementById("blackdiscount").innerHTML= discountMoney.toFixed(3);
+}
+
