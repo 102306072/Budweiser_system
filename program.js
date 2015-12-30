@@ -24,16 +24,16 @@ var co2=100;//1000公升
 var storeName;
 var storeSaleA, storeSaleB, storeSaleC, storeSaleD;
 
-var store1_cur = [35, 10, 1, 2, 3, 4]; //分店現在狀況(今日銷售, 剩餘存貨, 藍剩餘, 紅剩餘, 橘剩餘, 黑剩餘)
-var store2_cur = [28, 20, 2, 4, 6, 8];
-var store3_cur = [34, 9, 1, 2, 2, 4];
-var store4_cur = [8, 32, 4, 7, 9, 12];
-var store5_cur = [22, 20, 2, 4, 6, 8];
-var store6_cur = [39, 5, 1, 1, 1, 2];
-var store7_cur = [19, 25, 3, 4, 8, 10];
-var store8_cur = [20, 20, 2, 4, 6, 8];
-var store9_cur = [15, 30, 3, 6, 9, 12];
-var store10_cur = [40, 5, 1, 1, 1, 2];
+var store1_cur = [140, 40, 4, 8, 12, 16]; //分店現在狀況(今日銷售, 剩餘存貨, 藍剩餘, 紅剩餘, 橘剩餘, 黑剩餘)
+var store2_cur = [112, 80, 8, 16, 24, 32];
+var store3_cur = [34, 36, 4, 8, 8, 16];
+var store4_cur = [32, 128, 16, 28, 36, 48];
+var store5_cur = [88, 80, 8, 16, 24, 32];
+var store6_cur = [156, 20, 4, 4, 4, 8];
+var store7_cur = [76, 100, 12, 16, 32, 40];
+var store8_cur = [80, 20, 8, 16, 24, 32];
+var store9_cur = [60, 30, 12, 24, 36, 48];
+var store10_cur = [160, 20, 4, 4, 4, 8];
 
 //分店1的各月銷售量 A=藍40% B=紅30% C=橘20% D=黑10%
 var store1_sales_A = [400, 600, 840, 602, 732, 760, 840, 880, 900, 758, 592, 440]; 
