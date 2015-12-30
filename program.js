@@ -24,16 +24,16 @@ var co2=100;//1000公升
 var storeName;
 var storeSaleA, storeSaleB, storeSaleC, storeSaleD;
 
-var store1_cur = [35, 10, 50]; //分店現在狀況(今日銷售, 剩餘存貨, 配送數量)
-var store2_cur = [28, 20, 50];
-var store3_cur = [34, 9, 50];
-var store4_cur = [8, 32, 50];
-var store5_cur = [22, 20, 50];
-var store6_cur = [39, 5, 50];
-var store7_cur = [19, 25, 50];
-var store8_cur = [20, 20, 50];
-var store9_cur = [15, 30, 50];
-var store10_cur = [40, 5, 50];
+var store1_cur = [35, 10, 1, 2, 3, 4]; //分店現在狀況(今日銷售, 剩餘存貨, 藍剩餘, 紅剩餘, 橘剩餘, 黑剩餘)
+var store2_cur = [28, 20, 2, 4, 6, 8];
+var store3_cur = [34, 9, 1, 2, 2, 4];
+var store4_cur = [8, 32, 4, 7, 9, 12];
+var store5_cur = [22, 20, 2, 4, 6, 8];
+var store6_cur = [39, 5, 1, 1, 1, 2];
+var store7_cur = [19, 25, 3, 4, 8, 10];
+var store8_cur = [20, 20, 2, 4, 6, 8];
+var store9_cur = [15, 30, 3, 6, 9, 12];
+var store10_cur = [40, 5, 1, 1, 1, 2];
 
 //分店1的各月銷售量 A=藍40% B=紅30% C=橘20% D=黑10%
 var store1_sales_A = [400, 600, 840, 602, 732, 760, 840, 880, 900, 758, 592, 440]; 
@@ -567,6 +567,96 @@ function stockStatCompute() {
 }
 
 //行銷
+//店家要求進貨
+var sodaname;
+var storename;
+function sodaRequest(eventObj){
+	
+	sodaname =   eventObj.getAttribute("soda");
+	storename =  eventObj.getAttribute("store");
+	confirmRequest(sodaname,storename);
+
+}
+
+//確認店家訂貨要求
+function confirmRequest(sodaname,storename){
+	var storeNum = ["分店一","分店二","分店三","分店四","分店五","分店六","分店七","分店八","分店九","分店十"];
+	var sodaType = ["藍色汽水","紅色汽水","橘色汽水","黑色汽水"];
+	var cur = [store1_cur,store2_cur,store3_cur,store4_cur,store5_cur,store6_cur,store7_cur,store8_cur,store9_cur,store10_cur]
+	if(confirm("是否從存貨端進行"+sodaname+"的補貨?(數量:50瓶)")){
+		for(i=0; i<10; i++){
+			for(j=0; j<4; j++){
+				if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					cur[i][1] += 50;
+					cur[i][j+2] += 50;
+
+					productAmounts[j] -= 50;
+					stockRefresh();
+					
+				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					store2_cur[1] += 50;
+					store2_cur[j+2] += 50;
+					productAmounts[j+1] -= 50;
+					stockRefresh();
+					
+				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					store3_cur[1] += 50;
+					store3_cur[j+2] += 50;
+					productAmounts[j+1] -= 50;
+					stockRefresh();
+					
+				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					store4_cur[1] += 50;
+					store4_cur[j+2] += 50;
+					productAmounts[j+1] -= 50;
+					stockRefresh();
+					
+				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					store5_cur[1] += 50;
+					store5_cur[j+2] += 50;
+					productAmounts[j+1] -= 50;
+					stockRefresh();
+					
+				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					store6_cur[1] += 50;
+					store6_cur[j+2] += 50;
+					productAmounts[j+1] -= 50;
+					stockRefresh();
+					
+				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					store7_cur[1] += 50;
+					store7_cur[j+2] += 50;
+					productAmounts[j+1] -= 50;
+					stockRefresh();
+				
+				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					store8_cur[1] += 50;
+					store8_cur[j+2] += 50;
+					productAmounts[j+1] -= 50;
+					stockRefresh();
+					
+				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					store9_cur[1] += 50;
+					store9_cur[j+2] += 50;
+					productAmounts[j+1] -= 50;
+					stockRefresh();
+				
+				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
+					store10_cur[1] += 50;
+					store10_cur[j+2] += 50;
+					productAmounts[j+1] -= 50;
+					stockRefresh();
+					
+				}
+			}
+			
+		}
+		alert(storename+"補貨完成!");
+	}
+}
+
+
+
 function sell1() {
 	document.getElementById("sellBox2").style.display="none";
 	document.getElementById("sellBox3").style.display="none";
