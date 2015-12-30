@@ -594,64 +594,8 @@ function confirmRequest(sodaname,storename){
 				if(storeNum[i]==storename && sodaType[j]== sodaname) {
 					cur[i][1] += 50;
 					cur[i][j+2] += 50;
-
 					productAmounts[j] -= 50;
-					stockRefresh();
-					
-				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
-					store2_cur[1] += 50;
-					store2_cur[j+2] += 50;
-					productAmounts[j+1] -= 50;
-					stockRefresh();
-					
-				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
-					store3_cur[1] += 50;
-					store3_cur[j+2] += 50;
-					productAmounts[j+1] -= 50;
-					stockRefresh();
-					
-				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
-					store4_cur[1] += 50;
-					store4_cur[j+2] += 50;
-					productAmounts[j+1] -= 50;
-					stockRefresh();
-					
-				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
-					store5_cur[1] += 50;
-					store5_cur[j+2] += 50;
-					productAmounts[j+1] -= 50;
-					stockRefresh();
-					
-				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
-					store6_cur[1] += 50;
-					store6_cur[j+2] += 50;
-					productAmounts[j+1] -= 50;
-					stockRefresh();
-					
-				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
-					store7_cur[1] += 50;
-					store7_cur[j+2] += 50;
-					productAmounts[j+1] -= 50;
-					stockRefresh();
-				
-				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
-					store8_cur[1] += 50;
-					store8_cur[j+2] += 50;
-					productAmounts[j+1] -= 50;
-					stockRefresh();
-					
-				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
-					store9_cur[1] += 50;
-					store9_cur[j+2] += 50;
-					productAmounts[j+1] -= 50;
-					stockRefresh();
-				
-				}else if(storeNum[i]==storename && sodaType[j]== sodaname) {
-					store10_cur[1] += 50;
-					store10_cur[j+2] += 50;
-					productAmounts[j+1] -= 50;
-					stockRefresh();
-					
+					stockRefresh();	
 				}
 			}
 			
@@ -659,6 +603,7 @@ function confirmRequest(sodaname,storename){
 		alert(storename+"補貨完成!");
 	}
 }
+
 
 
 
