@@ -507,8 +507,6 @@ function stockStatCompute() {
 			aveSaleD += parseInt(tempStoreArray[j][i])/365;
 		}
 	}
-	console.log(aveSaleA + aveSaleB + aveSaleC + aveSaleD);
-
 
 	if (productAmounts[0] < aveSaleA*1.1) {
 		productStats[0] = "短缺";
@@ -529,6 +527,13 @@ function stockStatCompute() {
 		productStats[3] = "短缺";
 	} else {
 		productStats[3] = "正常";
+	}
+	for(var i = 4; i < productNames.length; i++) {
+		if (productAmounts[i] < (aveSaleA+aveSaleB+aveSaleC+aveSaleD)*0.25*1.1) {
+			productStats[i] = "短缺";
+		} else {
+			productStats[i] = "正常";
+		}
 	}
 
 	//["水","二氧化碳","糖","藍色色素","紅色色素","黃色色素"]
@@ -861,6 +866,10 @@ function chartRefresh() {
 	store10_sales_A, store10_sales_B, store10_sales_C, store10_sales_D
 	];
 	var index = document.getElementById("chartSelect").value;
+	storeSaleA = [0,0,0,0,0,0,0,0,0,0,0,0];
+	storeSaleB = [0,0,0,0,0,0,0,0,0,0,0,0];
+	storeSaleC = [0,0,0,0,0,0,0,0,0,0,0,0];
+	storeSaleD = [0,0,0,0,0,0,0,0,0,0,0,0];
 	if(index != "all") {
 		storeSaleA = tempStoreArray[4*index];
 		storeSaleB = tempStoreArray[4*index+1];
