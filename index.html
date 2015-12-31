@@ -368,8 +368,15 @@
                     </select>
                     <button id="chartButton" onclick="discount()">確認</button>
                     </div>
+                    <div id="avgSaleBox">
+                        <span>平均總銷售：</span><span id="avgSaleAll"></span><span>瓶 / 天　　|　　</span>  
+                        <span>平均藍色汽水銷售：</span><span id="avgSaleA"></span><span>瓶 / 天　　|　　</span>
+                        <span>平均紅色汽水銷售：</span><span id="avgSaleB"></span><span>瓶 / 天</span><br>
+                        <span>平均橘色汽水銷售：</span><span id="avgSaleC"></span><span>瓶 / 天　　|　　</span>
+                        <span>平均黑色汽水銷售：</span><span id="avgSaleD"></span><span>瓶 / 天</span>
+                    </div>
                     <div id="chartContainer" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                    <div id="segustion" style="display:none; weight:200px; height:50px; background:rgba(255, 255, 255, 0.9)">
+                    <div id="segustion">
                         <span>建議銷售組合：凡購買藍色汽水，即可以10元加購黑色汽水</br></span>
                         <span>建議降價方式：黑色汽水需降價</span><span id="blackdiscount"></span><span>元</span>
                     </div>

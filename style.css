@@ -292,24 +292,38 @@ label:hover {
 
 #chartSelectBox {
     width: 250px;
-    height: 30px;
+    height: 35px;
     padding: 10px;
     margin-bottom: 20px;
+    float: left;
     text-align: center;
     border: 1px solid black;
     background: rgba(255, 255, 255, 0.9);
 }
-#suggestbox{
-     width: 250px;
-    height: 80px;
-    padding: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    border: 1px solid black;
-    background: rgba(255, 255, 255, 0.9);
 
+#avgSaleBox {
+    width: 1200px;
+    height: 35px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    float: left;
+    text-align: center;
+    border: 1px solid black;
+    background: rgba(255, 255, 255, 0.9);
+    display: none;
 }
+
 .sellBox{
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid black;
 }
+
+#segustion {
+    margin-top: 100px;
+    display:none;
+    width:500px;
+    border: 1px solid black;
+    background: rgba(255, 255, 255, 0.9);
+}
+

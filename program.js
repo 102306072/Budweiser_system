@@ -24,16 +24,16 @@ var co2=100;//1000公升
 var storeName;
 var storeSaleA, storeSaleB, storeSaleC, storeSaleD;
 
-var store1_cur = [35, 10, 1, 2, 3, 4]; //分店現在狀況(今日銷售, 剩餘存貨, 藍剩餘, 紅剩餘, 橘剩餘, 黑剩餘)
-var store2_cur = [28, 20, 2, 4, 6, 8];
-var store3_cur = [34, 9, 1, 2, 2, 4];
-var store4_cur = [8, 32, 4, 7, 9, 12];
-var store5_cur = [22, 20, 2, 4, 6, 8];
-var store6_cur = [39, 5, 1, 1, 1, 2];
-var store7_cur = [19, 25, 3, 4, 8, 10];
-var store8_cur = [20, 20, 2, 4, 6, 8];
-var store9_cur = [15, 30, 3, 6, 9, 12];
-var store10_cur = [40, 5, 1, 1, 1, 2];
+var store1_cur = [70, 40, 4, 8, 12, 16]; //分店現在狀況(今日銷售, 剩餘存貨, 藍剩餘, 紅剩餘, 橘剩餘, 黑剩餘)
+var store2_cur = [56, 80, 8, 16, 24, 32];
+var store3_cur = [68, 36, 4, 8, 8, 16];
+var store4_cur = [16, 128, 16, 28, 36, 48];
+var store5_cur = [44, 80, 8, 16, 24, 32];
+var store6_cur = [78, 20, 4, 4, 4, 8];
+var store7_cur = [38, 100, 12, 16, 32, 40];
+var store8_cur = [40, 80, 8, 16, 24, 32];
+var store9_cur = [30, 120, 12, 24, 36, 48];
+var store10_cur = [80, 20, 4, 4, 4, 8];
 
 //分店1的各月銷售量 A=藍40% B=紅30% C=橘20% D=黑10%
 var store1_sales_A = [400, 600, 840, 602, 732, 760, 840, 880, 900, 758, 592, 440]; 
@@ -507,6 +507,11 @@ function stockStatCompute() {
 			aveSaleD += parseInt(tempStoreArray[j][i])/365;
 		}
 	}
+	console.log("平均總銷售：" + (aveSaleA+aveSaleB+aveSaleC+aveSaleD) );
+	console.log("平均藍色銷售：" + aveSaleA );
+	console.log("平均紅色銷售：" + aveSaleB );
+	console.log("平均橘色銷售：" + aveSaleC );
+	console.log("平均黑色銷售：" + aveSaleD );
 
 	if (productAmounts[0] < aveSaleA*1.1) {
 		productStats[0] = "短缺";
@@ -879,6 +884,7 @@ function chartRefresh() {
 	storeSaleB = [0,0,0,0,0,0,0,0,0,0,0,0];
 	storeSaleC = [0,0,0,0,0,0,0,0,0,0,0,0];
 	storeSaleD = [0,0,0,0,0,0,0,0,0,0,0,0];
+
 	if(index != "all") {
 		storeSaleA = tempStoreArray[4*index];
 		storeSaleB = tempStoreArray[4*index+1];
@@ -900,12 +906,40 @@ function chartRefresh() {
 			}
 		}
 	}
+	
 }
 
 //highcharts用
 $(function() {   
 
 $('#chartButton').click(function () {
+	var a=0;
+	var b=0;
+	var c=0;
+	var d=0;
+	for(var i=0;i<12;i++) {
+			a+=storeSaleA[i];
+	}
+	for(var i=0;i<12;i++) {
+		b+=storeSaleB[i];
+	}
+	for(var i=0;i<12;i++) {
+		c+=storeSaleC[i];
+	}
+	for(var i=0;i<12;i++) {
+		d+=storeSaleD[i];
+	}
+	var avgSaleAll = (a+b+c+d)/365;
+	a=a/365;
+	b=b/365;
+	c=c/365;
+	d=d/365;
+	document.getElementById("avgSaleAll").innerHTML=avgSaleAll.toFixed(1);
+	document.getElementById("avgSaleA").innerHTML=a.toFixed(1);
+	document.getElementById("avgSaleB").innerHTML=b.toFixed(1);
+	document.getElementById("avgSaleC").innerHTML=c.toFixed(1);
+	document.getElementById("avgSaleD").innerHTML=d.toFixed(1);
+	document.getElementById("avgSaleBox").style.display="block";
     $('#chartContainer').highcharts({
         title: {
             text: "分店銷售資料" ,
